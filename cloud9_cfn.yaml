@@ -1,0 +1,19 @@
+Resources:
+  rCloud9Environment:
+    Type: AWS::Cloud9::EnvironmentEC2
+    Properties:
+      AutomaticStopTimeMinutes: 30
+      ConnectionType: CONNECT_SSM
+      Description: Jory's development environment for StelligentU course work
+      InstanceType: t2.micro	
+      Name: Cloud9Environment
+      Repositories: 
+        - PathComponent: /repos/stelligent-u
+          RepositoryUrl: https://github.com/JoryGarrido/stelligent-u
+        - PathComponent: /repos/aws-cloud9-environment
+          RepositoryUrl: https://github.com/JoryGarrido/aws-cloud9-env
+  rCloud9WorkingRepository:
+    Type: AWS::CodeCommit::Repository
+    Properties:
+      RepositoryName: Cloud9WorkingRepository
+      RepositoryDescription: A CodeCommit repository for stashing work from the Cloud9 IDE
